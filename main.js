@@ -17,19 +17,22 @@ for (let i = 0; i < checkNumbers.length; i++) {
 const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function () {
   const generateInput = document.getElementById("generate-input").value;
+  const emptyGenerateInput = (document.getElementById("generate-input").value =
+    "");
   const checkInput = document.getElementById("check-input").value;
+  const emptyCheckInput = (document.getElementById("check-input").value = "");
   const pinMatch = document.getElementById("pin-match");
   const pinNotMatch = document.getElementById("pin-not-match");
   if (generateInput === checkInput) {
     pinMatch.style.display = "block";
     pinNotMatch.style.display = "none";
-    document.getElementById("generate-input").value = "";
-    document.getElementById("check-input").value = "";
+    emptyGenerateInput;
+    emptyCheckInput;
   } else {
     pinMatch.style.display = "none";
     pinNotMatch.style.display = "block";
-    document.getElementById("generate-input").value = "";
-    document.getElementById("check-input").value = "";
+    emptyGenerateInput;
+    emptyCheckInput;
   }
 });
 //SET CLEAR BUTTON
