@@ -23,9 +23,13 @@ submitButton.addEventListener("click", function () {
   if (generateInput === checkInput) {
     pinMatch.style.display = "block";
     pinNotMatch.style.display = "none";
+    document.getElementById("generate-input").value = "";
+    document.getElementById("check-input").value = "";
   } else {
     pinMatch.style.display = "none";
     pinNotMatch.style.display = "block";
+    document.getElementById("generate-input").value = "";
+    document.getElementById("check-input").value = "";
   }
 });
 //SET CLEAR BUTTON
@@ -33,4 +37,13 @@ const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", function () {
   const checkInput = document.getElementById("check-input").value;
   document.getElementById("check-input").value = "";
+});
+//SET BACK SPACE BUTTON
+const backSpace = document.getElementById("back-space");
+backSpace.addEventListener("click", function () {
+  const checkInput = document.getElementById("check-input").value;
+  document.getElementById("check-input").value = checkInput.substr(
+    0,
+    checkInput.length - 1
+  );
 });
