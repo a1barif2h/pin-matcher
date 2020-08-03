@@ -17,13 +17,21 @@ document.getElementById("submit-button").addEventListener("click", function () {
   const checkInput = document.getElementById("check-input").value;
   const pinMatch = document.getElementById("pin-match");
   const pinNotMatch = document.getElementById("pin-not-match");
+  const emptyInput = document.getElementById("empty-input");
   if (generateInput == "" || checkInput == "" || generateInput !== checkInput) {
-    pinMatch.style.display = "none";
-    pinNotMatch.style.display = "block";
-    document.getElementById("check-input").value = "";
+    if (generateInput == "" && checkInput == "") {
+      emptyInput.style.display = "block";
+      pinMatch.style.display = "none";
+    } else {
+      pinMatch.style.display = "none";
+      pinNotMatch.style.display = "block";
+      emptyInput.style.display = "none";
+      document.getElementById("check-input").value = "";
+    }
   } else {
     pinMatch.style.display = "block";
     pinNotMatch.style.display = "none";
+    emptyInput.style.display = "none";
     document.getElementById("generate-input").value = "";
     document.getElementById("check-input").value = "";
   }
