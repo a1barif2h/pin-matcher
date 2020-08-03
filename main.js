@@ -11,6 +11,27 @@ for (let i = 0; i < setNumbers.length; i++) {
     document.getElementById("check-input").value = checkInput + this.innerText;
   });
 }
+//CREAT A FUNCTION TO CONTROL ACTION LEFT AND SET THE MASSAGE
+function action() {
+  const actionLeft = document.getElementById("action-left").innerText;
+  const actionLeftNumber = parseInt(actionLeft);
+  const actionMassage = document.getElementById("action-massage");
+  const pinNotMatch = document.getElementById("pin-not-match");
+  const emptyInput = document.getElementById("empty-input");
+  if (actionLeftNumber > 0) {
+    const currentActionLeft = actionLeftNumber - 1;
+    document.getElementById("action-left").innerText = currentActionLeft;
+    if (document.getElementById("action-left").innerText == 0) {
+      document.getElementById("submit-button").disabled = true;
+      document.getElementById("submit-button").style.backgroundColor =
+        "#FF3C5F";
+      document.getElementById("submit-button").style.color = "#ffffff";
+      actionMassage.style.display = "block";
+      pinNotMatch.style.display = "none";
+      emptyInput.style.display = "none";
+    }
+  }
+}
 // SET THE SUBMIT BUTTON TO CHECK THE MATCH AND DISPLAY THE MASSAGE
 document.getElementById("submit-button").addEventListener("click", function () {
   const generateInput = document.getElementById("generate-input").value;
@@ -28,6 +49,7 @@ document.getElementById("submit-button").addEventListener("click", function () {
       emptyInput.style.display = "none";
       document.getElementById("check-input").value = "";
     }
+    action();
   } else {
     pinMatch.style.display = "block";
     pinNotMatch.style.display = "none";
